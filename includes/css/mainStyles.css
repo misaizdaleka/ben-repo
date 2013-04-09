@@ -15,8 +15,39 @@ body {
   stroke-width: 2px;
 }
 
+div.main
+{
+	width: 802px;
+	margin-left: 60px;
+}
+
 .RdYlGn .q0-11{fill:#EEEEEE}
 .RdYlGn .q1-11{fill:#D6E685}
 .RdYlGn .q2-11{fill:#8CC665}
 .RdYlGn .q3-11{fill:#44A340}
 .RdYlGn .q4-11{fill:#1E6823}
+
+.main-container
+{
+	-moz-box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 3px 3px 3px 3px;
+    margin-bottom: 20px;
+}
+
+.body h3
+{
+	background: none repeat scroll 0 0 #F7F7F7;
+    border-bottom: 1px solid #DDDDDD;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    line-height: 100%;
+    margin: 0;
+    padding: 10px;
+}
+
+text.text-month {
+    fill: #AAAAAA;
+    font-size: 10px;
+}
