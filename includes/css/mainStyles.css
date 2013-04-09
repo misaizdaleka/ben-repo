@@ -1,0 +1,22 @@
+
+body {
+  font: 10px sans-serif;
+  shape-rendering: crispEdges;
+}
+
+.day {
+  fill: #fff;
+  stroke: #ccc;
+}
+
+.month {
+  fill: none;
+  stroke: #FFF;
+  stroke-width: 2px;
+}
+
+.RdYlGn .q0-11{fill:#EEEEEE}
+.RdYlGn .q1-11{fill:#D6E685}
+.RdYlGn .q2-11{fill:#8CC665}
+.RdYlGn .q3-11{fill:#44A340}
+.RdYlGn .q4-11{fill:#1E6823}
