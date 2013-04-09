@@ -67,7 +67,7 @@ jQuery(document).ready(function($) {
 
 
     rect.append("title")
-      .text(function(d, i) { return d+", "+bData[i].value; });
+      .text(function(d, i) { return "Date: "+ d+"<br/> Percentage: "+bData[i].value; });
 
     /*svg.selectAll(".month")
       .data(function(d) { return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
@@ -92,7 +92,7 @@ jQuery(document).ready(function($) {
           hide: {
               fixed: false
           },
-          style: 'qtip-dark'
+          style: 'qtip-dark custom-tooltip qtip-rounded'
       });
 
 });
