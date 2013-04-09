@@ -14,6 +14,7 @@ jQuery(document).ready(function($) {
   var width = 800,
       height = 136,
       cellSize = 15; // cell size
+      cellPadding = 1.2;
 
   var day = d3.time.format("%w"),
       dayOfMonth = d3.time.format("%d")
@@ -47,10 +48,10 @@ jQuery(document).ready(function($) {
       .attr("class", function(d, i) {
             return "day "+color(bData[i].value);
           })
-      .attr("width", cellSize-2)
-      .attr("height", cellSize-2)
-      .attr("x", function(d) { return week(d) * cellSize + 1; })
-      .attr("y", function(d) { return day(d) * cellSize + 1; })
+      .attr("width", cellSize-cellPadding*2)
+      .attr("height", cellSize-cellPadding*2)
+      .attr("x", function(d) { return week(d) * cellSize + cellPadding; })
+      .attr("y", function(d) { return day(d) * cellSize + cellPadding; })
       .each(function(d) {
          if (day(d)*cellSize == 0 && dayOfMonth(d)<=7) {
             svg.append("text")
@@ -68,13 +69,31 @@ jQuery(document).ready(function($) {
     rect.append("title")
       .text(function(d, i) { return d+", "+bData[i].value; });
 
-    svg.selectAll(".month")
+    /*svg.selectAll(".month")
       .data(function(d) { return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
      .enter().append("path")
       .attr("class", "month")
-      .attr("d", monthPath);
+      .attr("d", monthPath);*/
 
     $("div.main-container").append($('svg'));
+    // $("rect.day").qtip();
+
+    $("rect.day").qtip({
+          content: {
+        text: function(api) {
+          return $(this).children('title').text();
+        }
+      },
+          position: {
+              my: 'bottom center',
+              at: 'top center'
+          },
+          // hide: false,
+          hide: {
+              fixed: false
+          },
+          style: 'qtip-dark'
+      });
 
 });
 
