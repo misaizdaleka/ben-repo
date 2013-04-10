@@ -93,7 +93,7 @@ jQuery(document).ready(function($) {
               fixed: false
           },
           style: 'qtip-dark custom-tooltip qtip-rounded'
-      });
+      }).qtip('hide').queue(function(){ $(this).qtip('destroy') });
 
 });
 
