@@ -29,11 +29,12 @@ div.main
 
 div.main
 {
-	-moz-box-sizing: border-box;
+	 -moz-box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #DDDDDD;
     border-radius: 3px 3px 3px 3px;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .main h3
