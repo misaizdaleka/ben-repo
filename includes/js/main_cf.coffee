@@ -7,6 +7,17 @@ jQuery(document).ready ($) ->
     w1 = +week(t1)
     "M" + (w0 + 1) * cellSize + "," + d0 * cellSize + "H" + w0 * cellSize + "V" + 7 * cellSize + "H" + w1 * cellSize + "V" + (d1 + 1) * cellSize + "H" + (w1 + 1) * cellSize + "V" + 0 + "H" + (w0 + 1) * cellSize + "Z"
 
+  processTemplate = (template, params) ->
+    template
+          .replace(/{{opportunities}}/ig, params.opportunities)
+          .replace(/{{tNum1}}/ig, params.tNum1)
+          .replace(/{{tNum2}}/ig, params.tNum2)
+          .replace(/{{tNum3}}/ig, params.tNum3)
+          .replace(/{{eNum1}}/ig, params.eNum1)
+          .replace(/{{eNum2}}/ig, params.eNum2)
+          .replace(/{{eNum3}}/ig, params.eNum3)
+         
+
   width       = 800
   height      = 136
   cellSize    = 15 # cell size
@@ -21,6 +32,53 @@ jQuery(document).ready ($) ->
   color = d3.scale.quantize().domain([0, 100]).range(d3.range(5).map((d) ->
     "q" + d + "-11"
   ))
+
+  barData = [
+    opportunities: 3
+    tNum1: 50478
+    tNum2: 15300
+    tNum3: 5800
+    eNum1: 10500
+    eNum2: 55300
+    eNum3: 4300
+  ,
+    opportunities: 5
+    tNum1: 98675
+    tNum2: 15300
+    tNum3: 5800
+    eNum1: 10500
+    eNum2: 55300
+    eNum3: 4300
+  ,
+    opportunities: 2
+    tNum1: 17456
+    tNum2: 15300
+    tNum3: 5800
+    eNum1: 10500
+    eNum2: 55300
+    eNum3: 4300
+  ]
+
+  barWidth = d3.scale.linear().domain([0, d3.sum(barData.map((d) ->
+     d.tNum1))]).range([0, 100]);
+  barClasses = d3.scale.quantize().domain([0, 2]).range(['success', 'warning', 'danger']);
+
+  bars = d3.select('body>div.container')
+           .insert("div", "body>div.main-container")
+           .attr('class', 'progress progress-striped')
+
+  bars.selectAll('div').data(barData)
+          .enter()
+          .append("div")
+          .attr("class", (d,i) ->
+            "row-fluid item bar bar-" + barClasses i
+            )
+          .style('width', (d,i) ->
+              barWidth(d.tNum1) + "%"
+          )
+          .html((d,i) -> 
+              processTemplate $("#barData").html(), barData[i]
+          );
 
   svg = d3.select("body>div.main-container")
   			.append("svg")
@@ -56,18 +114,17 @@ jQuery(document).ready ($) ->
 		        week(d) * cellSize + 5
 		      ).attr "y", -5
 		  )
+      .attr("data-title", (d, i) ->
+        "Date: " + bData[i].date + "<br/> Percentage: " + bData[i].value
+      )
 		  .datum(format)
-
-  rect.append("title").text (d, i) ->
-		    "Date: " + d + "<br/> Percentage: " + bData[i].value
-
 
   $("div.main-container").append $("svg")
 
   $("rect.day").qtip
     content:
       text: (api) ->
-        $(this).children("title").text()
+        $(this).data("title")
 
     position:
       my: "bottom center"
