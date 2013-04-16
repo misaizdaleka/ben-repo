@@ -137,7 +137,7 @@ div.additional span.title3
 }
 
 .progress-striped div div.first span{
-  font-size: 38px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -172,7 +172,14 @@ div.progress.progress-striped
 
 span.subcolumn {
   float:left;
-  width: 100%;
+  width: 100%; 
+}
+
+div.column1
+{
+/*  overflow:hidden;
+white-space: nowrap;
+width: 100%;  */
 }
 
 
