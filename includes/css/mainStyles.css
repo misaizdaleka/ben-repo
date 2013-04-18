@@ -14,16 +14,39 @@ body {
   stroke-width: 1px;
 }
 
+label.week-days
+{
+  color: #AAAAAA;
+  font-size: 10px;
+  text-align: center;
+}
+
+label.week-days:nth-child(2)
+{
+  margin-top: 11px;
+}
+
+label.week-days:nth-child(3)
+{
+  margin-top: 10px;
+}
+
 .month {
   fill: none;
   stroke: #FFF;
   stroke-width: 2px;
 }
 
-div.main
+div.week-div
 {
-	width: 802px;
-	margin-left: 60px;
+  float: left;
+  margin-top: 41px;
+  position: relative;
+  right: 3px;
+}
+div.main-container
+{
+  margin-left: 10px;
 }
 
 .RdYlGn .q0-11{fill:#EEEEEE}
@@ -40,6 +63,8 @@ div.main
     border-radius: 3px 3px 3px 3px;
     margin-bottom: 20px;
     margin-top: 20px;
+    width: 823px;
+    margin-left: 60px
 }
 
 .main h3
